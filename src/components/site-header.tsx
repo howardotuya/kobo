@@ -10,6 +10,7 @@ export function SiteHeader() {
     <header className="container-page flex items-center justify-between pt-[18px] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:pt-7">
       <Link
         href="/"
+        prefetch={false}
         className="flex w-fit items-center gap-2 text-xl font-semibold tracking-[-0.02em] lg:gap-2.5 lg:text-2xl"
       >
         <LogoMark className="size-7 lg:size-[34px]" />

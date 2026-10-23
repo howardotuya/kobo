@@ -5,7 +5,9 @@ import { ParallaxStage } from "./parallax-stage";
 import { Picture } from "./picture";
 import { buttonTone, pressable } from "./ui";
 
-// Load reveal: everything is in place by 900ms. Delays are per element.
+// Load reveal: everything is in place by 900ms. Delays are per element. Both
+// keyframes start at opacity 0.01, not 0, so the headline still counts as
+// painted on the first frame and LCP isn't held back by the animation.
 const FADE_UP = "motion-safe:animate-[fade-up_600ms_var(--ease-out-expo)_both]";
 const LINE_UP = "motion-safe:animate-[line-up_800ms_var(--ease-out-expo)_both]";
 
@@ -32,11 +34,12 @@ export function Hero() {
           className="mt-[clamp(0.75rem,0.611rem+0.571vw,1.125rem)] -ml-[0.035em] text-display font-medium lg:-ml-[0.055em] lg:text-[9cqi] lg:tracking-[-0.05em]"
         >
           {hero.title.map((line, i) => (
-            // Each line rises out of its own mask; padding keeps descenders unclipped.
-            <span key={line} className="-mb-[0.12em] block overflow-hidden pb-[0.12em]">
-              <span className={`${LINE_UP} block`} style={{ animationDelay: `${60 + i * 90}ms` }}>
-                {line}
-              </span>
+            <span
+              key={line}
+              className={`${LINE_UP} block`}
+              style={{ animationDelay: `${60 + i * 90}ms` }}
+            >
+              {line}
             </span>
           ))}
         </h1>

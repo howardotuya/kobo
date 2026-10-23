@@ -43,7 +43,7 @@ export function UseCases() {
     <section
       id="customers"
       aria-labelledby="customers-title"
-      className="container-page pt-[clamp(3.5rem,2.014rem+6.095vw,7.5rem)]"
+      className="container-page pt-[clamp(3.5rem,2.014rem+6.095vw,7.5rem)] defer-render"
     >
       <div className="reveal">
         <h2 id="customers-title" className="text-h2 font-medium lg:text-center">

@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   reactStrictMode: true,
+  // One small stylesheet (~10 KB gzip): inlining it saves a render-blocking round trip.
+  experimental: { inlineCss: true },
   images: {
     // Static export has no optimizer: scripts/images.mjs pre-renders AVIF and
     // WebP files and the loader maps each requested width onto them.

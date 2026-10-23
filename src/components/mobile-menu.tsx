@@ -55,6 +55,7 @@ export function MobileMenu() {
           <div className="flex items-center justify-between">
             <Link
               href="/"
+              prefetch={false}
               onClick={hide}
               className="flex items-center gap-2 text-xl font-semibold tracking-[-0.02em]"
             >

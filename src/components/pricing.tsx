@@ -54,7 +54,7 @@ export function Pricing() {
     <section
       id="pricing"
       aria-labelledby="pricing-title"
-      className="mt-[clamp(3.25rem,1.671rem+6.476vw,7.5rem)] bg-forest pt-[clamp(3.75rem,2.821rem+3.81vw,6.25rem)] pb-[60px] text-white surface-dark lg:pb-[50px]"
+      className="mt-[clamp(3.25rem,1.671rem+6.476vw,7.5rem)] bg-forest pt-[clamp(3.75rem,2.821rem+3.81vw,6.25rem)] pb-[60px] text-white defer-render surface-dark lg:pb-[50px]"
     >
       <div className="container-page">
         <div className="reveal text-center">

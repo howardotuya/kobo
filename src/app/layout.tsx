@@ -37,6 +37,7 @@ const nairaMono = localFont({
   ],
   variable: "--font-naira-mono",
   display: "swap",
+  preload: false,
   adjustFontFallback: false,
   declarations: [{ prop: "unicode-range", value: "U+20A6" }],
 });

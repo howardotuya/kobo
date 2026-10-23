@@ -92,6 +92,15 @@
   }
 }
 
+/*
+ * Far-below-the-fold sections skip rendering until they're near the viewport.
+ * This also keeps their lazy images out of the initial load.
+ */
+@utility defer-render {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 /* Content column: 1200px max, fluid gutters. */
 @utility container-page {
   width: min(100% - 2 * var(--gutter), 75rem);
@@ -168,16 +177,17 @@
   }
 }
 
-/* Hero load reveal: lines rise out of a mask, everything else fades up. */
+/* Hero load reveal: headline lines rise further, everything else fades up. */
 @keyframes line-up {
   from {
-    translate: 0 105%;
+    opacity: 0.01;
+    translate: 0 0.3em;
   }
 }
 
 @keyframes fade-up {
   from {
-    opacity: 0;
+    opacity: 0.01;
     translate: 0 16px;
   }
 }
