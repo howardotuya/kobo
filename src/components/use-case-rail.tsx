@@ -12,19 +12,26 @@ export function UseCaseRail({ label, children }: { label: string; children: Reac
   const rail = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
 
+  // Snap position from scroll offset; the last dot lights when the rail can't scroll further.
   useEffect(() => {
     const el = rail.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.index));
-        }
-      },
-      { root: el, threshold: 0.6 },
-    );
-    for (const item of el.children) io.observe(item);
-    return () => io.disconnect();
+    let frame = 0;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const [first, second] = el.children;
+        if (!first || !second) return;
+        const step = (second as HTMLElement).offsetLeft - (first as HTMLElement).offsetLeft;
+        const atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 2;
+        setActive(atEnd ? el.children.length - 1 : Math.round(el.scrollLeft / step));
+      });
+    };
+    el.addEventListener("scroll", update, { passive: true });
+    return () => {
+      el.removeEventListener("scroll", update);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -37,7 +44,7 @@ export function UseCaseRail({ label, children }: { label: string; children: Reac
         className="-mx-(--gutter) flex snap-x snap-mandatory scroll-px-(--gutter) [scrollbar-width:none] gap-4 overflow-x-auto px-(--gutter) md:gap-6 xl:mx-0 xl:grid xl:grid-cols-4 xl:overflow-visible xl:px-0"
       >
         {children.map((child, i) => (
-          <li key={i} data-index={i} className="shrink-0 snap-start">
+          <li key={i} className="shrink-0 snap-start">
             {child}
           </li>
         ))}

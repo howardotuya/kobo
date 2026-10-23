@@ -10,7 +10,7 @@ export function LogoStrip() {
         <p className="text-center text-[13px] leading-[1.3] text-soft lg:text-[15px]">
           {logos.caption}
         </p>
-        <ul className="mt-[23px] grid grid-cols-2 gap-y-3.5 lg:mt-[31px] lg:flex lg:justify-between">
+        <ul className="mt-[23px] grid grid-cols-2 gap-y-3.5 md:flex md:flex-wrap md:justify-center md:gap-x-10 lg:mt-[31px] xl:flex-nowrap xl:justify-between xl:gap-x-0">
           {logos.names.map((name) => (
             <li key={name} className="text-center last:odd:col-span-2">
               {/* Muted wordmarks stand in for customer logos (WCAG exempts logotypes from contrast). */}
