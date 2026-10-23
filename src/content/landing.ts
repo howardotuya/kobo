@@ -67,6 +67,16 @@ export const features = {
   lead: "Invoices, pay links, reminders and reports. Naira-first, and made for how Nigerians actually work.",
 };
 
+export type PhotoName = "baker" | "fashion" | "photographer" | "designer";
+
+/** Alt text for the four photos cut from the Figma contact sheet. */
+export const photoAlt: Record<PhotoName, string> = {
+  fashion: "A fashion designer in her studio, smiling at her phone over a length of Ankara fabric.",
+  photographer: "A photographer with a camera on his shoulder, checking his phone by the lagoon.",
+  designer: "A designer at a café table with her laptop open, smiling at her phone.",
+  baker: "A baker in a Musa Bakes apron behind a counter of bread, looking at his phone.",
+};
+
 export type FeatureTab = {
   id: string;
   label: string;
@@ -74,7 +84,7 @@ export type FeatureTab = {
   title: string;
   body: string;
   cta: string;
-  photo: { name: "baker" | "fashion" | "photographer" | "designer"; label: string; amount: string };
+  photo: { name: PhotoName; label: string; amount: string; pill: string };
   /** Not in Figma: written for the build, pending Howard's review. */
   draft?: true;
 };
@@ -87,7 +97,7 @@ export const featureTabs: FeatureTab[] = [
     title: "A proper invoice in under a minute",
     body: "Add your client, list the work, pick a due date. Kòbò adds your logo, VAT and a Paystack link, then sends it by email or WhatsApp.",
     cta: "Create an invoice",
-    photo: { name: "baker", label: "Personal", amount: "₦85,000" },
+    photo: { name: "baker", label: "Personal", amount: "₦85,000", pill: "Paid via Paystack" },
   },
   {
     id: "pay-links",
@@ -96,7 +106,7 @@ export const featureTabs: FeatureTab[] = [
     title: "A pay link for anything you sell",
     body: "Make a link for a deposit, a fixed price or an amount your customer chooses. Share it on WhatsApp or Instagram and Paystack does the rest.",
     cta: "Create a pay link",
-    photo: { name: "fashion", label: "Deposit", amount: "₦40,000" },
+    photo: { name: "fashion", label: "Deposit", amount: "₦40,000", pill: "Paid via Paystack" },
     draft: true,
   },
   {
@@ -106,7 +116,12 @@ export const featureTabs: FeatureTab[] = [
     title: "Reminders that sound like you",
     body: "Kòbò nudges clients before and after the due date by email and WhatsApp, in your words, and stops the moment they pay.",
     cta: "Set up reminders",
-    photo: { name: "photographer", label: "Wedding shoot", amount: "₦250,000" },
+    photo: {
+      name: "photographer",
+      label: "Wedding shoot",
+      amount: "₦250,000",
+      pill: "Paid after 1 reminder",
+    },
     draft: true,
   },
   {
@@ -116,7 +131,7 @@ export const featureTabs: FeatureTab[] = [
     title: "Know what’s paid, owed and late",
     body: "See money in by month, who owes you and what’s overdue. Export to CSV or PDF when your accountant asks.",
     cta: "See your reports",
-    photo: { name: "designer", label: "This month", amount: "₦1.2m" },
+    photo: { name: "designer", label: "This month", amount: "₦1.2m", pill: "Up 18% on September" },
     draft: true,
   },
 ];

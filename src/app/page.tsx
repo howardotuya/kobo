@@ -1,4 +1,6 @@
+import { Features } from "@/components/features";
 import { Hero } from "@/components/hero";
+import { LogoStrip } from "@/components/logo-strip";
 import { SiteHeader } from "@/components/site-header";
 
 export default function Home() {
@@ -7,6 +9,8 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
+        <LogoStrip />
+        <Features />
       </main>
     </>
   );

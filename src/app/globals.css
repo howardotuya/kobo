@@ -120,6 +120,48 @@
   --color-focus: var(--color-forest);
 }
 
+/*
+ * Feature tabs: the underline is anchored to the selected tab and slides
+ * between them. Without anchor positioning it's a plain per-tab underline.
+ */
+@layer components {
+  .tab[aria-selected="true"] {
+    anchor-name: --active-tab;
+  }
+
+  .tab-indicator {
+    position: absolute;
+    bottom: -1px;
+    height: 3px;
+    background: var(--color-ink);
+    position-anchor: --active-tab;
+    left: anchor(left);
+    right: anchor(right);
+    transition:
+      left 450ms var(--ease-out-expo),
+      right 450ms var(--ease-out-expo);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  @supports not (anchor-name: --tab) {
+    .tab-indicator {
+      display: none;
+    }
+
+    .tab[aria-selected="true"]::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: -1px;
+      height: 3px;
+      background: var(--color-ink);
+    }
+  }
+}
+
 @keyframes float {
   50% {
     translate: 0 -8px;
