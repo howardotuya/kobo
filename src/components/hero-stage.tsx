@@ -26,7 +26,12 @@ type LayerProps = {
   y: number;
   w?: number;
   h?: number;
-  /** Pointer parallax travel in px; bigger = closer to the viewer. */
+  /**
+   * Pointer parallax travel in px; bigger = closer to the viewer. Kept small:
+   * cards move ≤10px and ≤6px relative to the phone, so they never reach the
+   * amount or line items or come within 20px of the viewport edge. Send
+   * reminder moves with the phone because it sits next to the Paystack bar.
+   */
   depth?: number;
   enter: string;
   delay?: number;
@@ -87,20 +92,20 @@ export function HeroStageLg() {
         aria-label={stageLabel}
         className="relative aspect-square [--spacing:calc(100cqi/700)]"
       >
-        <Layer x={70} y={70} w={560} h={560} depth={6} enter={GROW}>
+        <Layer x={70} y={70} w={560} h={560} depth={2} enter={GROW}>
           <div className="size-full rounded-full bg-[radial-gradient(closest-side,var(--color-lime),color-mix(in_oklab,var(--color-lime)_35%,transparent))]" />
         </Layer>
-        <Layer x={0} y={0} w={700} h={700} depth={3} enter={GROW} delay={60}>
+        <Layer x={0} y={0} w={700} h={700} depth={1} enter={GROW} delay={60}>
           <div className="size-full rounded-full border-[1.5px] border-line" />
         </Layer>
 
-        <Layer x={200} y={10} w={300} depth={10} enter={RISE} delay={150}>
+        <Layer x={200} y={10} w={300} depth={4} enter={RISE} delay={150}>
           <Phone width={300} height={620}>
             <InvoiceScreenLg />
           </Phone>
         </Layer>
 
-        <Layer x={10} y={90} w={170} h={150} depth={22} enter={POP} delay={300}>
+        <Layer x={10} y={90} w={170} h={150} depth={9} enter={POP} delay={300}>
           <Float offset={-1} className={cn("relative rounded-u-14 bg-yellow", cardShadow)}>
             <SparkleIcon className="absolute" style={{ left: u(20), top: u(18), width: u(28) }} />
             {/* Geist sets a hair narrower in browsers than in Figma; 122 reproduces Figma's breaks. */}
@@ -113,7 +118,7 @@ export function HeroStageLg() {
           </Float>
         </Layer>
 
-        <Layer x={480} y={140} w={210} h={150} depth={26} enter={POP} delay={380}>
+        <Layer x={480} y={140} w={210} h={150} depth={10} enter={POP} delay={380}>
           <Float offset={-3.5} className={cn("relative rounded-u-14 bg-mint", cardShadow)}>
             <BankIcon className="absolute" style={{ left: u(20), top: u(18), width: u(28) }} />
             <p
@@ -125,7 +130,7 @@ export function HeroStageLg() {
           </Float>
         </Layer>
 
-        <Layer x={50} y={400} w={150} h={150} depth={18} enter={POP} delay={460}>
+        <Layer x={50} y={400} w={150} h={150} depth={8} enter={POP} delay={460}>
           <Float
             offset={-2}
             className={cn("relative rounded-u-14 bg-coral text-white", cardShadow)}
@@ -147,7 +152,7 @@ export function HeroStageLg() {
         </Layer>
 
         {/* Nudged 10px right of Figma so it clears the Paystack bar's end cap. */}
-        <Layer x={470} y={460} depth={30} enter={POP} delay={520}>
+        <Layer x={470} y={460} depth={4} enter={POP} delay={520}>
           <Float offset={-4.5}>
             <p
               className="flex items-center rounded-u-14 bg-ink text-u-16 font-medium whitespace-nowrap text-white shadow-[0_12px_30px_rgb(15_26_20/0.15)]"
@@ -159,10 +164,10 @@ export function HeroStageLg() {
           </Float>
         </Layer>
 
-        <Layer x={80} y={20} w={120} h={60} depth={14} enter={RISE} delay={420}>
+        <Layer x={80} y={20} w={120} h={60} depth={6} enter={RISE} delay={420}>
           <CurveArrowLeft className="size-full text-ink" />
         </Layer>
-        <Layer x={460} y={70} w={120} h={50} depth={14} enter={RISE} delay={420}>
+        <Layer x={460} y={70} w={120} h={50} depth={6} enter={RISE} delay={420}>
           <CurveArrowRight className="size-full text-ink" />
         </Layer>
       </div>
