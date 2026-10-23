@@ -1,7 +1,13 @@
+import { Hero } from "@/components/hero";
+import { SiteHeader } from "@/components/site-header";
+
 export default function Home() {
   return (
-    <main>
-      <h1>Kòbò</h1>
-    </main>
+    <>
+      <SiteHeader />
+      <main>
+        <Hero />
+      </main>
+    </>
   );
 }
