@@ -17,6 +17,13 @@
   --color-yellow: #fff07a;
   --color-coral: #f08463;
   --color-sky: #cfe6ff;
+  /*
+   * Text-only shades so small labels meet WCAG AA (≥4.5:1) on the surfaces
+   * they sit on. Fills keep the Figma colours.
+   */
+  --color-green-ink: #167643;
+  --color-coral-ink: #af6048;
+  --color-soft-ink: #656864;
   /* Phone bezel in the mockups (Figma uses a raw #121212 there). */
   --color-bezel: #121212;
 }

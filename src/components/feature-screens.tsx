@@ -187,7 +187,7 @@ export function PayLinkScreen({ size }: { size: ScreenSize }) {
       <Field
         kit={kit}
         label="Your link"
-        value={<span className="text-green">kobo.ng/p/adaeze</span>}
+        value={<span className="text-green-ink">kobo.ng/p/adaeze</span>}
       />
       <Toggle kit={kit} label="Customer picks amount" on={false} />
       <Button kit={kit}>Copy link</Button>
@@ -215,7 +215,9 @@ export function RemindersScreen({ size }: { size: ScreenSize }) {
             {step.when}
             {size === "lg" && <span className="text-soft"> · {step.via}</span>}
           </span>
-          <span className={step.status === "Sent" ? "text-green" : "text-soft"}>{step.status}</span>
+          <span className={step.status === "Sent" ? "text-green-ink" : "text-soft"}>
+            {step.status}
+          </span>
         </Box>
       ))}
       <Toggle kit={kit} label="Stop when paid" on />

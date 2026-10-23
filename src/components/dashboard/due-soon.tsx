@@ -2,7 +2,7 @@ import { dueSoon, type Due } from "@/content/dashboard";
 import { cn } from "@/lib/cn";
 
 const tones: Record<Due["tone"], string> = {
-  late: "bg-coral text-white",
+  late: "bg-coral text-ink",
   soon: "bg-yellow text-ink",
   later: "bg-paper text-ink",
 };

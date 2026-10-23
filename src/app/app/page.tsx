@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 };
 
 const noteTone: Record<Tone, string> = {
-  green: "text-green",
+  green: "text-green-ink",
   soft: "text-soft",
-  coral: "text-coral",
+  coral: "text-coral-ink",
 };
 
 function Avatar() {

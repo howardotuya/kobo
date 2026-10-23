@@ -48,7 +48,7 @@ function PaidPill({
 }) {
   return (
     <span
-      className={`absolute flex items-center rounded-full bg-mint leading-none font-medium text-green ${landing.pill}`}
+      className={`absolute flex items-center rounded-full bg-mint leading-none font-medium text-green-ink ${landing.pill}`}
       style={{
         top: u(top),
         left: u(left),

@@ -3,8 +3,8 @@ import { cn } from "@/lib/cn";
 import { Dot } from "../ui";
 
 const statusStyle: Record<Status, { label: string; className: string }> = {
-  paid: { label: "Paid", className: "bg-mint text-green" },
-  overdue: { label: "Overdue", className: "bg-coral text-white" },
+  paid: { label: "Paid", className: "bg-mint text-green-ink" },
+  overdue: { label: "Overdue", className: "bg-coral text-ink" },
   sent: { label: "Sent", className: "bg-sky text-ink" },
   draft: { label: "Draft", className: "bg-paper text-soft" },
 };
@@ -27,7 +27,7 @@ export function StatusPill({
       className={cn(
         "inline-flex items-center gap-1 rounded-full leading-[1.3] font-medium whitespace-nowrap",
         list ? "px-[9px] py-[3px] text-[11px]" : "px-2.5 py-1 text-xs",
-        list && status === "draft" ? "bg-line text-soft" : tone,
+        list && status === "draft" ? "bg-line text-soft-ink" : tone,
       )}
     >
       {!list && <Dot />}

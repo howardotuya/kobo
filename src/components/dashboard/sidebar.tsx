@@ -40,7 +40,7 @@ export function Sidebar() {
                 <Icon name={icons[item]} className="size-5" />
                 {item}
                 {item === "Invoices" && (
-                  <span className="-mr-2 ml-auto rounded-full bg-coral px-2.5 py-1 text-xs leading-none text-white">
+                  <span className="-mr-2 ml-auto rounded-full bg-coral px-2.5 py-1 text-xs leading-none text-ink">
                     3<span className="sr-only"> overdue or due soon</span>
                   </span>
                 )}
