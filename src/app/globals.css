@@ -241,6 +241,12 @@
   }
 }
 
+@keyframes bar-grow {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
 @keyframes panel-in {
   from {
     opacity: 0;

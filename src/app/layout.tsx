@@ -32,6 +32,7 @@ const naira = localFont({
 
 const nairaMono = localFont({
   src: [
+    { path: "../fonts/naira-mono-400.woff2", weight: "400" },
     { path: "../fonts/naira-mono-500.woff2", weight: "500" },
     { path: "../fonts/naira-mono-600.woff2", weight: "600" },
   ],
