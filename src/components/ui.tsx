@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
@@ -26,10 +27,18 @@ type MaybeLinkProps = Omit<ComponentProps<"a">, "href"> & {
 
 /**
  * A link, or plain text when the destination doesn't exist yet. Plain text
- * keeps the visual design without shipping dead links.
+ * keeps the visual design without shipping dead links. Page paths go through
+ * next/link; in-page anchors stay plain so CSS smooth scrolling applies.
  */
 export function MaybeLink({ href, className, children, ...rest }: MaybeLinkProps) {
   if (href === null) return <span className={className}>{children}</span>;
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={className} {...rest}>
+        {children}
+      </Link>
+    );
+  }
   return (
     <a href={href} className={className} {...rest}>
       {children}
